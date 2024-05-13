@@ -1,16 +1,16 @@
 diff --git a/src/Makefile b/src/Makefile
-index fc49839d..785a496e 100644
+index 30503b23..dee5d124 100644
 --- a/src/Makefile
 +++ b/src/Makefile
-@@ -34,7 +34,6 @@ SRC =              \
- 	cortex.c       \
+@@ -43,7 +43,6 @@ SRC =              \
  	cortexm.c      \
  	crc32.c        \
+ 	ch579.c        \
 -	efm32.c        \
  	exception.c    \
  	gdb_if.c       \
  	gdb_main.c     \
-@@ -86,6 +85,11 @@ SRC =              \
+@@ -97,6 +96,11 @@ SRC =              \
  	target_flash.c \
  	target_probe.c
  

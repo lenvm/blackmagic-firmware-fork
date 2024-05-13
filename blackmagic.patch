@@ -1,10 +1,10 @@
 diff --git a/src/Makefile b/src/Makefile
-index 6740485f..e7115196 100644
+index 30503b23..86dc8926 100644
 --- a/src/Makefile
 +++ b/src/Makefile
-@@ -192,8 +192,8 @@ all_platforms:
+@@ -217,8 +217,8 @@ all_platforms:
  	fi
- 	$(Q)$(MAKE) $(MFLAGS) -C ../libopencm3 lib/stm32/f1 lib/stm32/f4 lib/lm4f
+ 	$(Q)$(MAKE) $(MFLAGS) -C ../deps/libopencm3 lib/stm32/f1 lib/stm32/f4 lib/stm32/f7 lib/lm4f
  	$(Q)set -e ;\
 -	mkdir -p artifacts/$(shell git describe --always --dirty --tags) ;\
 -	echo "<html><body><ul>" > artifacts/index.html ;\
@@ -13,7 +13,7 @@ index 6740485f..e7115196 100644
  	$(MAKE) clean ;\
  	for i in platforms/*/Makefile.inc ; do \
  		export DIRNAME=`dirname $$i` ;\
-@@ -204,25 +204,33 @@ all_platforms:
+@@ -229,25 +229,33 @@ all_platforms:
  		export CFLAGS=-Werror ;\
  		echo "Building for hardware platform: $$PROBE_HOST" ;\
  		$(MAKE);\
@@ -59,7 +59,7 @@ index 6740485f..e7115196 100644
  command.c: include/version.h
  
 diff --git a/src/platforms/native/Makefile.inc b/src/platforms/native/Makefile.inc
-index 01d9245d..c6f590fe 100644
+index 4d10a46b..f649c301 100644
 --- a/src/platforms/native/Makefile.inc
 +++ b/src/platforms/native/Makefile.inc
 @@ -28,11 +28,15 @@ SRC +=               \
@@ -81,10 +81,10 @@ index 01d9245d..c6f590fe 100644
 -	-$(Q)$(RM) blackmagic.bin blackmagic_dfu blackmagic_dfu.bin blackmagic_dfu.hex
 +	-$(Q)$(RM) blackmagic.bin blackmagic_dfu blackmagic_dfu.bin blackmagic_dfu.hex blackmagic_allinone.bin
 diff --git a/src/platforms/stlink/Makefile.inc b/src/platforms/stlink/Makefile.inc
-index d10878a4..e3875fc9 100644
+index 89578755..cce4ce0b 100644
 --- a/src/platforms/stlink/Makefile.inc
 +++ b/src/platforms/stlink/Makefile.inc
-@@ -52,11 +52,15 @@ SRC +=          \
+@@ -56,11 +56,15 @@ SRC +=          \
  ifeq ($(ST_BOOTLOADER), 1)
  all:	blackmagic.bin
  else
@@ -102,7 +102,7 @@ index d10878a4..e3875fc9 100644
  host_clean:
  	-$(Q)$(RM) *.bin *elf *hex
 diff --git a/src/platforms/swlink/Makefile.inc b/src/platforms/swlink/Makefile.inc
-index f357602d..b928ad8c 100644
+index e14af9d7..a986fdc3 100644
 --- a/src/platforms/swlink/Makefile.inc
 +++ b/src/platforms/swlink/Makefile.inc
 @@ -28,11 +28,15 @@ SRC +=          \

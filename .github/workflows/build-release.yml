@@ -30,7 +30,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           repository: "blackmagic-debug/blackmagic"
           ref: ${{ steps.upstream.outputs.tag_name }}
@@ -47,7 +47,7 @@ jobs:
           rm -fv /ucrt64/lib/libftdi1.dll.a /ucrt64/lib/libhidapi.dll.a /ucrt64/lib/libusb-1.0.dll.a
           mingw32-make PROBE_HOST=hosted HOSTED_BMP_ONLY=0
           zip -j9 bmda.zip src/blackmagic.exe 3rdparty/ftdi/amd64/ftd2xx.dll
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: bmda
           path: bmda.zip
@@ -68,12 +68,12 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           repository: "blackmagic-debug/blackmagic"
           ref: ${{ steps.upstream.outputs.tag_name }}
 
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           path: "bmp"
 
@@ -95,7 +95,7 @@ jobs:
           mv src/artifacts/hosted/ src/artifacts/linux/
           mv src/artifacts/linux/blackmagic-hosted src/artifacts/linux/blackmagic
 
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4
         with:
           name: bmda
 
