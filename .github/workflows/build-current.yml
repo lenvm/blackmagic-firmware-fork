@@ -28,8 +28,15 @@ jobs:
         with:
           msystem: UCRT64
           update: true
-          install: git zip mingw-w64-ucrt-x86_64-toolchain
+          install: git zip mingw-w64-ucrt-x86_64-toolchain patch
           pacboy: libusb:p libftdi:p hidapi:p
+
+      - uses: actions/checkout@v4
+        with:
+          path: "bmp"
+
+      - name: Patch
+        run: patch -p1 -i bmp/at32f405.patch
 
       - name: build
         run: |
@@ -65,7 +72,7 @@ jobs:
           path: "bmp"
 
       - name: Patch
-        run: patch -p1 -i bmp/blackmagic.patch; patch -p1 -i bmp/bluepill.patch
+        run: patch -p1 -i bmp/blackmagic.patch; patch -p1 -i bmp/bluepill.patch; patch -p1 -i bmp/at32f405.patch
 
       # Setup and use a suitable ARM GCC for the firmware
       - name: Setup ARM GCC
