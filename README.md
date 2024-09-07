@@ -1,6 +1,8 @@
 # Black Magic Probe Firmware
 
-This is an automated unofficial build of [Black Magic Probe](https://black-magic.org/), an arm debugger. Weekly updates.
+This git has been archived. 
+This was an automated unofficial build of [Black Magic Probe](https://black-magic.org/), an arm debugger. 
+Black Magic Probe now uses [meson](https://mesonbuild.com/) to build firmware, and these workflows using  _make_ are now obsolete.
 
 ## Black Magic Probe Firmware
 
